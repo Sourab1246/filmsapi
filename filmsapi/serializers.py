@@ -4,17 +4,19 @@ from .models import Movies,Actors,MoviesActors
 class ActorsSerializer(serializers.ModelSerializer):
     class Meta:
         model=Actors
-        fields=['name']
+        fields='__all__'
         
 class MoviesSerializer(serializers.ModelSerializer):
+    # actors=serializers.StringRelatedField(many=True)
+   
     class Meta:
         model=Movies
-        fields=['movies_name','review','rating','trailer_link','visual_type','types']
+        fields='__all__'
  
 class MoviesActorsSerializer(serializers.ModelSerializer):
     class Meta:
-        models=MoviesActors
-        fields=['movies','actors'] 
+        model=MoviesActors
+        fields='__all__'
         
         
 def create(self,validated_data):     
